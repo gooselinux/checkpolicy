@@ -1,0 +1,12 @@
+diff --exclude-from=exclude -N -u -r nsacheckpolicy/policy_parse.y checkpolicy-2.0.22/policy_parse.y
+--- nsacheckpolicy/policy_parse.y	2010-05-19 14:45:51.000000000 -0400
++++ checkpolicy-2.0.22/policy_parse.y	2010-06-16 08:08:37.000000000 -0400
+@@ -755,6 +755,8 @@
+                         ;
+ version_identifier      : VERSION_IDENTIFIER
+                         { if (insert_id(yytext,0)) return -1; }
++			| number
++                        { if (insert_id(yytext,0)) return -1; }
+                         | ipv4_addr_def /* version can look like ipv4 address */
+                         ;
+ avrules_block           : avrule_decls avrule_user_defs
